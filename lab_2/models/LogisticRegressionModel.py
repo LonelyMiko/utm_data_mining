@@ -4,6 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 from helper.helper import cross_validation
+from helper.GridSearchOptimization import optimize
+
 
 
 def predict(df):
@@ -27,6 +29,8 @@ def predict(df):
     print("Test y: ")
     print(y_test.to_numpy())
     cross_validation(LogisticRegression(random_state=16), X, y, y_test, y_pred)
+
+    print(optimize(LogisticRegression(random_state=16),X=X_train_std, y=y_train))
     return confusion_matrix_evaluation(y_test, y_pred)
 
 
